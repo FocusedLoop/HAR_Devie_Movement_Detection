@@ -29,8 +29,8 @@ This project implements a **Human Activity Recognition (HAR)** device using a **
 * **Rest**
 
 Using **Scikit-learn**, the following models were developed:
-* **MLPClassifier** (Neural Network)
-* **Support Vector Classifier (SVC)**
+* **MLPClassifier**
+* **Support Vector Classifier**
 * **KNeighborsClassifier**
 * **RandomForestClassifier**
 
