@@ -1,4 +1,16 @@
-"python har_device.py" in the terminal to start the program
+"python har_device_classifier.py" in the terminal to start the program
+<br /><br />Setup:
+<br />Input the desired model
+
+<br /><br />Once in use:
+<br />Device will start detecting movement
+<br />Should print one of the 4 movement types; running, walking, situps or rest
+
+<br /><br />CRTL+C to kill the program after use (should exit without an error)
+
+
+
+"python har_device_data_collection.py" in the terminal to start the program
 <br /><br />Setup:
 <br />Input your session User - Your name
 <br />Input your session ID - Number of times you have performed a movement actvity (to differentiate between entries easily if there is an issue)
