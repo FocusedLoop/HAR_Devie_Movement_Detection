@@ -1,40 +1,109 @@
-"python har_device_classifier.py" in the terminal to start the program
-<br /><br />Setup:
-<br />Input the desired model
+# Raspberry Pi HAR Device Movement Classifier
 
-<br /><br />Once in use:
-<br />Device will start detecting movement
-<br />Should print one of the 4 movement types; running, walking, situps or rest
+**Human Activity Recognition (HAR) system running on a Raspberry Pi** that classifies user movement (running, walking, sit-ups, or rest) in real time using trained ML models.
 
-<br /><br />CRTL+C to kill the program after use (should exit without an error)
+![The HAR device, showcasing the Raspberry Pi setup.](https://raw.githubusercontent.com/username/har-device-classifier/main/images/device_setup.jpg)
+![The HAR device in action, detecting and classifying movements.](https://raw.githubusercontent.com/username/har-device-classifier/main/images/device_in_action.jpg)
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Setup & Installation](#setup--installation)
+4. [Usage](#usage)
+   * [Classification Mode](#classification-mode)
+   * [Data-Collection Mode](#data-collection-mode)
+5. [Data Collection & Session Instructions](#data-collection--session-instructions)
+6. [Troubleshooting & Errors](#troubleshooting--errors)
 
+## Overview
+This project implements a **Human Activity Recognition (HAR)** device using a **Raspberry Pi** and an **ADXL343 accelerometer**. We trained **4 different models** on **4,281 rows of movement data** to classify the user's motion as one of:
+* **Running**
+* **Walking**
+* **Sit-ups**
+* **Rest**
 
-"python har_device_data_collection.py" in the terminal to start the program
-<br /><br />Setup:
-<br />Input your session User - Your name
-<br />Input your session ID - Number of times you have performed a movement actvity (to differentiate between entries easily if there is an issue)
-<br />Input the performed movement type - The movement type you are going to perform; running, walking, situps or rest
+Using **Scikit-learn**, the following models were developed:
+* **MLPClassifier** (Neural Network)
+* **Support Vector Classifier (SVC)**
+* **KNeighborsClassifier**
+* **RandomForestClassifier**
 
-<br /><br />During device validation:
-<br />Skip - Input "y" to skip or "n" to start validation
-<br />LED TEST - LED Should start blinking
-<br />SENSOR TEST - The current time as well as x, y and z values from the sesnor should printed
-<br />NOTE - If any of the following are not functioning as stated above then the device is NOT working
+All **trained models** (in `.pkl` format) and a **scaler** file for preprocessing are available in the `models/` folder.
 
-<br /><br />Once in use:
-<br />Press button to start the session, after which movement data will begin being recorded
-<br />Press button again to end session
+## Features
+* **Real-Time Classification**: Continuously detects motion from the ADXL343 sensor.
+* **Data Collection**: Easily record new data to enhance or retrain your models.
+* **Multiple Models**: Choose from MLP, SVM, KNN, or RF.
+* **Sensor Validation**: LED & sensor checks ensure the device is working properly before data collection.
 
-<br /><br />Session Instructions:
-<br />The following items below MUST be recorded for time you use the device
-<br />The session ID - Number of times you have performed any movement activity
-<br />The movement performed for that session - This is a backup incase the MongoDB has the incorrect movement type
-<br />Time of each session - Each activty should add up to 10 minutes in total (More may be need, this will be discussed depending on how the next 2 weeks go)
+## Setup & Installation
 
-<br /><br />Errors:
-<br />Once a session starts the LED should be always be ON unless the session has ended (button has been pressed again)
-<br />OFF LED - There is something wrong with the device or the sesnor
-<br />BLINKING LED - The device has lost connection to the MongoDB (check internet connection or there is an error with the database itself)
+### 1. Hardware Setup
+* Connect an **ADXL343 accelerometer** to the Raspberry Pi's **I²C** pins.
+* *(Optional)* Connect an **LED** and **button** for device interaction and validation checks.
 
-<br /><br />CRTL+C to kill the program after use (should exit without an error)
+### 2. Software Setup
+* Ensure your Raspberry Pi has **Python 3** and **pip** installed, and that **I²C** is enabled.
+* Clone this repository:
+```bash
+git clone https://github.com/YourUserName/har-device-classifier.git
+cd har-device-classifier
+```
+* Run the **setup script** (optional):
+```bash
+chmod +x device_setup.sh
+./device_setup.sh
+```
+This script installs the necessary Python packages (NumPy, Scikit-learn, Pandas, etc.).
+
+### 3. Choosing a Model
+* When prompted, pick one of the **four models**: `mlp`, `svm`, `knn`, or `rf`.
+* The **scaler file** (`scaler.pkl`) is used for feature scaling.
+
+## Usage
+
+### Classification Mode
+Use **har_device_classifier.py** to classify movements in real time:
+```bash
+python har_device_classifier.py
+```
+* **Model Selection**: Enter `mlp`, `svm`, `knn`, or `rf`.
+* The Pi will begin detecting and classifying movements (`running`, `walking`, `sit-ups`, or `rest`).
+* Press `CTRL+C` to stop the program.
+
+### Data-Collection Mode
+Use **har_device_data_collection.py** to collect new data:
+```bash
+python har_device_data_collection.py
+```
+* **Session Setup**
+   1. Enter your name (session user).
+   2. Enter a session ID (an integer).
+   3. Specify the movement type (`running`, `walking`, `sit-ups`, `rest`).
+* **Validation Checks**
+   * Skip? Enter `y` to skip or `n` to run the LED and sensor tests.
+   * **LED Test**: LED blinks if working.
+   * **Sensor Test**: Prints current time + (x, y, z) readings.
+   * If any check fails, the device is not functioning correctly.
+* **Recording Data**
+   1. Press the **button** to start data collection (LED stays ON).
+   2. Move as specified (`running`, `walking`, `sit-ups`, `rest`).
+   3. Press the **button** again to end the session.
+   4. Press `CTRL+C` to exit at any time.
+
+## Data Collection & Session Instructions
+* **Session ID**: Increment this each time you perform an activity.
+* **Movement Performed**: Keep a manual note of the movement.
+* **Time Per Session**: Aim for ~10 minutes per activity.
+* **LED States**:
+   * **ON**: Data recording in progress.
+   * **OFF**: Device or sensor issue.
+   * **BLINKING**: Lost MongoDB connection or database error.
+
+## Troubleshooting & Errors
+* **LED OFF during recording** → Check device wiring and sensor logs.
+* **BLINKING LED** → Database connection lost; check network or DB status.
+* **Repeated Same Label** → Possibly incorrect sensor wiring or wrong model.
+* **Program Crash** → Press `CTRL+C` to force stop and check logs for errors.
+
+**Enjoy classifying movements with your Raspberry Pi HAR device!**
