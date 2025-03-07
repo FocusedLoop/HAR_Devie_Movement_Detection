@@ -1,10 +1,10 @@
-# Raspberry Pi HAR Device Movement Classifier
+![image](https://github.com/user-attachments/assets/13b88d49-9f86-491e-a57a-562e71c11c3b)# Raspberry Pi HAR Device Movement Classifier
 
 **Human Activity Recognition (HAR) system running on a Raspberry Pi** that classifies user movement (running, walking, sit-ups, or rest) in real time using trained ML models.
 
 ![The HAR device, showcasing the Raspberry Pi setup.](https://github.com/user-attachments/assets/74ee28ad-a053-42b3-ab22-7ea457b5cca4)
 
-![The HAR device in action, detecting and classifying movements.](https://raw.githubusercontent.com/username/har-device-classifier/main/images/device_in_action.jpg)
+![The HAR device in action, detecting and classifying movements.](https://github.com/user-attachments/assets/dcb70b2d-a91c-481f-b905-1f84927321aa)
 
 ## Table of Contents
 1. [Overview](#overview)
