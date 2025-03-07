@@ -49,6 +49,10 @@ All **trained models** (in `.pkl` format) and a **scaler** file for preprocessin
 git clone https://github.com/YourUserName/har-device-classifier.git
 cd har-device-classifier
 ```
+* Download both required folders:
+  * `models/` - Contains all trained classification models and the scaler file
+  * `scripts/` - Contains the data collection and classification scripts (final product)
+
 * Run the **setup script** (optional):
 ```bash
 chmod +x device_setup.sh
@@ -56,25 +60,27 @@ chmod +x device_setup.sh
 ```
 This script installs the necessary Python packages (NumPy, Scikit-learn, Pandas, etc.).
 
+* **Important**: The `models/` folder must be present for the scripts to run properly.
+
 ### 3. Choosing a Model
 * When prompted, pick one of the **four models**: `mlp`, `svm`, `knn`, or `rf`.
-* The **scaler file** (`scaler.pkl`) is used for feature scaling.
+* The **scaler file** (`scaler.pkl`) is used for feature scaling and is located in the `models/` folder.
 
 ## Usage
 
 ### Classification Mode
-Use **har_device_classifier.py** to classify movements in real time:
+Use **har_device_classifier.py** from the `scripts/` folder to classify movements in real time:
 ```bash
-python har_device_classifier.py
+python scripts/har_device_classifier.py
 ```
 * **Model Selection**: Enter `mlp`, `svm`, `knn`, or `rf`.
 * The Pi will begin detecting and classifying movements (`running`, `walking`, `sit-ups`, or `rest`).
 * Press `CTRL+C` to stop the program.
 
 ### Data-Collection Mode
-Use **har_device_data_collection.py** to collect new data:
+Use **har_device_data_collection.py** from the `scripts/` folder to collect new data:
 ```bash
-python har_device_data_collection.py
+python scripts/har_device_data_collection.py
 ```
 * **Session Setup**
    1. Enter your name (session user).
