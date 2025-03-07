@@ -2,13 +2,14 @@
 
 **Human Activity Recognition (HAR) system running on a Raspberry Pi** that classifies user movement (running, walking, sit-ups, or rest) in real time using trained ML models.
 
-<img src="https://github.com/user-attachments/assets/74ee28ad-a053-42b3-ab22-7ea457b5cca4"
-     alt="The HAR device, showcasing the Raspberry Pi setup."
-     width="400" />
-
-<img src="https://github.com/user-attachments/assets/dcb70b2d-a91c-481f-b905-1f84927321aa"
-     alt="The HAR device in action, detecting and classifying movements."
-     width="400" />
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/74ee28ad-a053-42b3-ab22-7ea457b5cca4"
+       alt="The HAR device, showcasing the Raspberry Pi setup."
+       width="500" />
+  <img src="https://github.com/user-attachments/assets/dcb70b2d-a91c-481f-b905-1f84927321aa"
+       alt="The HAR device in action, detecting and classifying movements."
+       width="500" />
+</div>
 
 ## Table of Contents
 1. [Overview](#overview)
