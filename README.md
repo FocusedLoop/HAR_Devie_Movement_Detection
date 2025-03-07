@@ -52,7 +52,7 @@ All **trained models** (in `.pkl` format) and a **scaler** file for preprocessin
 * Ensure your Raspberry Pi has **Python 3** and **pip** installed, and that **I²C** is enabled.
 * Clone this repository:
 ```bash
-git clone [https://github.com/YourUserName/har-device-classifier.git](https://github.com/FocusedLoop/RaspberryPi-HAR-Classifier.git)
+git clone https://github.com/FocusedLoop/RaspberryPi-HAR-Classifier.git
 cd har-device-classifier
 ```
 * Download both required folders:
